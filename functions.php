@@ -19,6 +19,10 @@ add_action('wp_enqueue_scripts', function () {
             'nonce' => wp_create_nonce('arvinge_contact'),
         ]);
     }
+    if (is_page('forum-event')) {
+        wp_enqueue_style('arvinge-forum', get_template_directory_uri() . '/assets/forum.css', ['arvinge-style'], wp_get_theme()->get('Version'));
+        wp_enqueue_script('arvinge-forum', get_template_directory_uri() . '/assets/forum.js', [], wp_get_theme()->get('Version'), true);
+    }
 });
 
 function arvinge_asset($name) {
@@ -82,4 +86,18 @@ add_action('init', function () {
         if (is_wp_error($created)) return;
     }
     update_option('arvinge_contact_page_checked', '1');
+});
+
+add_action('init', function () {
+    if (get_option('arvinge_forum_page_checked')) return;
+    if (!get_page_by_path('forum-event')) {
+        $created = wp_insert_post([
+            'post_title' => 'Forum & Event',
+            'post_name' => 'forum-event',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+        ], true);
+        if (is_wp_error($created)) return;
+    }
+    update_option('arvinge_forum_page_checked', '1');
 });

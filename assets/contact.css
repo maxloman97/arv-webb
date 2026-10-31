@@ -259,5 +259,5 @@ body:has(.contact-page){background:#171721;color:#F4F5F9;font-family:'Inter Tigh
 .contact-page .thanks .big svg{width:26px;height:26px}
 .contact-page .err[hidden]{display:none}
 .contact-honeypot{left:-10000px}
-@media(max-width:820px){.contact-page .contact-hero{min-height:0!important;height:auto;padding:120px 0 72px}.contact-page .contact-hero .hero-h{font-size:clamp(27px,8.6vw,40px)}.contact-page .contact-hero .hero-row{margin-top:24px}.contact-form-section{padding:8px 0 96px}.page-kontakt .navr>.navlogin{display:none}}
+@media(max-width:820px){.contact-page .contact-hero{min-height:0!important;height:auto;padding:120px 0 72px!important}.contact-page .contact-hero .hero-h{font-size:clamp(27px,8.6vw,40px)}.contact-page .contact-hero .hero-row{margin-top:24px}.contact-form-section{padding:8px 0 96px}.page-kontakt .navr>.navlogin{display:none}}
 @media(max-width:480px){.contact-page .fcard{padding:26px 20px 28px}.contact-page .submit .btn{width:100%}}

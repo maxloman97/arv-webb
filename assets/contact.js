@@ -99,4 +99,5 @@
     form.hidden = false;
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+  if (new URLSearchParams(location.search).get('typ') === 'event') choose('event');
 })();
