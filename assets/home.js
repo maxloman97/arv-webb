@@ -13,7 +13,7 @@
     const index = Number(b.dataset.goal);
     select('[data-goal]', '[data-goal-panel]', index);
     document.querySelectorAll('[data-goal-accordion]').forEach((p, i) => { p.hidden = i !== index; });
-    document.querySelectorAll('.goal-arrow').forEach((a, i) => { a.textContent = i === index ? '↑' : '→'; });
+    document.querySelectorAll('.goal-arrow').forEach((a, i) => { a.textContent = i === index && innerWidth <= 1000 ? '↑' : '→'; });
   }));
   document.querySelectorAll('[data-case]').forEach(b => b.addEventListener('click', () => select('[data-case]', '[data-case-panel]', Number(b.dataset.case))));
   const goalSection = document.querySelector('.goals-sec');
