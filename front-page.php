@@ -15,7 +15,7 @@ $cases = [
 $logos = [['6cf098fc8a75185dd6ecb223dc0b7171.png','KC Group'],['9297707ccf68132324c29fd70f666831.png','EzyPay'],['d47d3eeca039d467f580b939d5d65708.png','Terranor'],['0113743ed173b1a1c7ac28ae788b3930.png','Transformant'],['7c5bb4c5fd0ea9eb2759e245d369f53d.png','Framgångsakademin'],['c2f95611098926e4c37fde1da05927ef.png','ATA'],['9df200710851b705ce241cd07b97ee6f.png','Korrosionsgruppen'],['bff574368bc106e7923158f6c34a06d6.png','Neon']];
 ?>
 <main id="main">
- <section id="top" class="hero"><div class="hero-bg"><img class="hero-img" src="<?php echo arvinge_asset('5932e1a0ba0e2194cc612cb2d0dfc012.jpg'); ?>" alt=""><video class="hero-img hero-video" muted playsinline loop preload="none" data-desktop="<?php echo arvinge_asset('ec5382a3bc0da9063e80d8a48d402d45.mp4'); ?>" data-mobile="<?php echo arvinge_asset('7e3fae2f70ec01627fb206ab5086e4cc.mp4'); ?>"></video></div>
+ <section id="top" class="hero"><div class="hero-bg"><img class="hero-img" src="<?php echo arvinge_asset('5932e1a0ba0e2194cc612cb2d0dfc012.jpg'); ?>" alt="" loading="eager" decoding="async" fetchpriority="high"><video class="hero-img hero-video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" data-desktop="<?php echo arvinge_asset('arvinge-hero-desktop.mp4'); ?>" data-mobile="<?php echo arvinge_asset('arvinge-hero-mobile.mp4'); ?>"></video></div>
   <h1 class="h1">En kommunikationsbyrå som <br><em>gör dig lättare att välja</em></h1>
   <p class="hero-lead">Du vet varför ditt företag är ett bra val. Vi hjälper dina kunder och resten av marknaden att förstå det också.</p>
   <div class="hctas"><a class="btn lg" href="<?php echo arvinge_page('kontakt'); ?>">Boka ett möte</a><a class="btn lg glass" href="#case">Se våra case</a></div>

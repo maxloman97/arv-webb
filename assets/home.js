@@ -49,8 +49,58 @@
     });
   }
   const video = document.querySelector('.hero-video');
-  if (video && !matchMedia('(prefers-reduced-motion: reduce)').matches && !navigator.connection?.saveData) {
-    const start = () => { video.src = matchMedia('(max-width: 600px)').matches ? video.dataset.mobile : video.dataset.desktop; video.addEventListener('playing', () => { video.style.opacity = '1'; }, { once: true }); video.play().catch(() => {}); };
-    if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 3000 }); else setTimeout(start, 1500);
+  const still = document.querySelector('.hero-bg img.hero-img');
+  const hero = document.querySelector('.hero');
+  const connection = navigator.connection;
+  const skipVideo = matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    connection?.saveData || /(^|\b)(slow-2g|2g)(\b|$)/.test(connection?.effectiveType || '');
+  if (video && still && hero && !skipVideo) {
+    let started = false;
+    let firstFrameShown = false;
+    let inView = false;
+    const play = () => {
+      if (!started || !inView || document.hidden) return;
+      video.play().catch(() => { video.style.opacity = '0'; });
+    };
+    const showFirstFrame = () => {
+      if (firstFrameShown || !inView || document.hidden || video.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) return;
+      const reveal = () => { if (inView && !document.hidden) { video.style.opacity = '1'; firstFrameShown = true; } };
+      if ('requestVideoFrameCallback' in video) {
+        video.requestVideoFrameCallback(reveal);
+      } else {
+        requestAnimationFrame(() => requestAnimationFrame(reveal));
+      }
+    };
+    video.addEventListener('playing', showFirstFrame);
+    video.addEventListener('loadeddata', showFirstFrame);
+    video.addEventListener('error', () => { video.style.opacity = '0'; });
+    const start = () => {
+      if (started || !inView || document.hidden) return;
+      started = true;
+      video.preload = 'auto';
+      video.src = matchMedia('(max-width: 600px)').matches ? video.dataset.mobile : video.dataset.desktop;
+      video.load();
+      play();
+    };
+    const whenIdle = () => {
+      if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 5000 });
+      else setTimeout(start, 1200);
+    };
+    const pageReady = document.readyState === 'complete' ? Promise.resolve() :
+      new Promise(resolve => addEventListener('load', resolve, { once: true }));
+    const imageReady = still.complete && still.naturalWidth ? Promise.resolve() :
+      new Promise(resolve => { still.addEventListener('load', resolve, { once: true }); still.addEventListener('error', resolve, { once: true }); });
+    Promise.all([pageReady, imageReady, document.fonts?.ready || Promise.resolve()]).then(async () => {
+      if (!still.naturalWidth) return;
+      if (still.decode) await still.decode().catch(() => {});
+      if (!('IntersectionObserver' in window)) { inView = true; whenIdle(); return; }
+      const observer = new IntersectionObserver(entries => {
+        inView = entries[0].isIntersecting;
+        if (inView) { if (started) play(); else whenIdle(); }
+        else if (started) video.pause();
+      });
+      observer.observe(hero);
+      document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); else play(); });
+    });
   }
 })();
