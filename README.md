@@ -11,7 +11,7 @@ Copy this directory to `wp-content/themes/arvinge`, then activate **Arvinge** in
 - Responsive home page with navigation, services, case selector, Forum, testimonials, team, CTA and FAQ.
 - Images and video are bundled under `assets/`.
 - Page URLs are generated from the WordPress site URL. The linked pages need to exist with the slugs `forum-event`, `om-oss`, `blogg`, `kontakt` and `press`.
-- The supplied design contained an unfinished third testimonial and a nonfunctional analyzer form. Neither is displayed here.
+- The supplied design contains an unfinished third testimonial and a nonfunctional analyzer form. Both are displayed to match the design and require final content or integration before launch.
 
 ## Next steps
 

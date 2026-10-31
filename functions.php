@@ -9,8 +9,7 @@ add_action('after_setup_theme', function () {
 });
 
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('arvinge-font', 'https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap', [], null);
-    wp_enqueue_style('arvinge-style', get_stylesheet_uri(), ['arvinge-font'], wp_get_theme()->get('Version'));
+    wp_enqueue_style('arvinge-style', get_stylesheet_uri(), [], wp_get_theme()->get('Version'));
     wp_enqueue_script('arvinge-home', get_template_directory_uri() . '/assets/home.js', [], wp_get_theme()->get('Version'), true);
 });
 
