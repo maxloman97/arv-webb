@@ -27,6 +27,12 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_style('arvinge-about', get_template_directory_uri() . '/assets/about.css', ['arvinge-style'], wp_get_theme()->get('Version'));
         wp_enqueue_script('arvinge-about', get_template_directory_uri() . '/assets/about.js', [], wp_get_theme()->get('Version'), true);
     }
+    if (is_page('blogg') || (is_home() && !is_front_page())) {
+        wp_enqueue_style('arvinge-blog', get_template_directory_uri() . '/assets/blog.css', ['arvinge-style'], wp_get_theme()->get('Version'));
+    }
+    if (is_page('press')) {
+        wp_enqueue_style('arvinge-press', get_template_directory_uri() . '/assets/press.css', ['arvinge-style'], wp_get_theme()->get('Version'));
+    }
 });
 
 function arvinge_asset($name) {
@@ -118,4 +124,20 @@ add_action('init', function () {
         if (is_wp_error($created)) return;
     }
     update_option('arvinge_about_page_checked', '1');
+});
+
+add_action('init', function () {
+    if (get_option('arvinge_blog_press_pages_checked')) return;
+    foreach (['blogg' => 'Blogg', 'press' => 'Press'] as $slug => $title) {
+        if (get_page_by_path($slug)) continue;
+        $created = wp_insert_post([
+            'post_title' => $title,
+            'post_name' => $slug,
+            'post_status' => 'publish',
+            'post_type' => 'page',
+            'post_content' => $slug === 'press' ? '[arvinge_pressrum]' : '',
+        ], true);
+        if (is_wp_error($created)) return;
+    }
+    update_option('arvinge_blog_press_pages_checked', '1');
 });
