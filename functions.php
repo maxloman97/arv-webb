@@ -23,6 +23,10 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_style('arvinge-forum', get_template_directory_uri() . '/assets/forum.css', ['arvinge-style'], wp_get_theme()->get('Version'));
         wp_enqueue_script('arvinge-forum', get_template_directory_uri() . '/assets/forum.js', [], wp_get_theme()->get('Version'), true);
     }
+    if (is_page('om-oss')) {
+        wp_enqueue_style('arvinge-about', get_template_directory_uri() . '/assets/about.css', ['arvinge-style'], wp_get_theme()->get('Version'));
+        wp_enqueue_script('arvinge-about', get_template_directory_uri() . '/assets/about.js', [], wp_get_theme()->get('Version'), true);
+    }
 });
 
 function arvinge_asset($name) {
@@ -100,4 +104,18 @@ add_action('init', function () {
         if (is_wp_error($created)) return;
     }
     update_option('arvinge_forum_page_checked', '1');
+});
+
+add_action('init', function () {
+    if (get_option('arvinge_about_page_checked')) return;
+    if (!get_page_by_path('om-oss')) {
+        $created = wp_insert_post([
+            'post_title' => 'Om oss',
+            'post_name' => 'om-oss',
+            'post_status' => 'publish',
+            'post_type' => 'page',
+        ], true);
+        if (is_wp_error($created)) return;
+    }
+    update_option('arvinge_about_page_checked', '1');
 });
