@@ -134,6 +134,9 @@ button,input{font-family:inherit}
 
 /* Vad vill ni uppnå? */
 .goals{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:28px;align-items:stretch}
+.goals-intro{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:start;margin:-12px 0 48px;padding-top:28px;border-top:1px solid var(--s-line)}
+.goals-intro h3{max-width:19em;margin:0;color:var(--s-ink);font-size:clamp(23px,2.3vw,34px);font-weight:470;line-height:1.17;letter-spacing:-.02em}
+.goals-intro p{max-width:40em;margin:0;color:var(--s-body);font-size:18px;line-height:1.5}
 .goal-list{display:flex;flex-direction:column;gap:6px;justify-content:center}
 .goal{width:100%;min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 26px;border:0;border-radius:999px;background:transparent;color:#AFB2CE;font-size:19px;font-weight:420;text-align:left;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s}
 .goal:hover{background:rgba(175,178,206,.08);color:#F4F5F9}
@@ -496,4 +499,5 @@ main{overflow:visible}
 @media(max-width:820px){.mmenu:not([hidden]){visibility:visible;opacity:1}.hero{min-height:100svh!important}}
 @media(max-width:1000px){.goal-panel{display:none}.goal-acc{display:block}.goal-acc .gp{display:flex;flex-direction:column;background:var(--s-raised);border-radius:16px;padding:26px 24px 28px}.goal-acc .goal-bottom{padding-top:28px}}
 @media(max-width:820px){.fx-h br,.ctacard .h2 br{display:none}.rev-sec .revs{grid-template-columns:none}.goal-item{width:100%}.goal-acc .gp{min-height:0}.site-footer .fgrid{gap:42px}}
+@media(max-width:820px){.goals-intro{grid-template-columns:1fr;gap:14px;margin:0 0 36px;padding-top:26px}.goals-intro p{font-size:16px}}
 @media(max-width:1000px){.goal-arrow{opacity:1}.goal.on .goal-arrow{font-size:0}.goal.on .goal-arrow::after{content:'↑';font-size:18px}.ctacard .h2{max-width:250px}}
