@@ -26,8 +26,27 @@
     const chars = [];
     nodes.forEach(node => { const frag = document.createDocumentFragment(); for (const ch of node.textContent) { if (/\s/.test(ch)) frag.append(ch); else { const span = document.createElement('span'); span.className = 'stmt-char'; span.textContent = ch; frag.append(span); chars.push(span); } } node.replaceWith(frag); });
     const section = statement.closest('.statement');
+    statement.classList.add('is-animated');
+    const clamp = value => Math.max(0, Math.min(1, value));
+    const ghost = [50, 50, 59], soft = [175, 178, 206], ink = [244, 245, 249];
+    const mix = (a, b, k) => `rgb(${a.map((v, i) => Math.round(v + (b[i] - v) * k)).join(',')})`;
     let scheduled = false;
-    const update = () => { scheduled = false; const r = section.getBoundingClientRect(); const travel = Math.max(1, r.height - innerHeight); const p = Math.max(0, Math.min(1, -r.top / travel)); chars.forEach((c, i) => { const t = Math.max(0, Math.min(1, (p * 1.35 - i / chars.length) / .35)); c.style.opacity = String(t); c.style.filter = t > 0 && t < 1 ? `blur(${(1-t)*5}px)` : 'none'; }); };
+    const update = () => {
+      scheduled = false;
+      const H = innerHeight;
+      const y = -section.getBoundingClientRect().top / H;
+      const rise = .205 * (1 - clamp(y / .74)) ** 2 * H;
+      const progress = clamp((y + .13) / 2.03);
+      section.style.setProperty('--rise', `${rise.toFixed(1)}px`);
+      chars.forEach((c, i) => {
+        const t = clamp((progress * 1.16 - i / chars.length) / .16);
+        if (t >= 1) { c.style.opacity = '1'; c.style.color = 'inherit'; c.style.filter = 'none'; }
+        else if (t <= 0) { c.style.opacity = '0'; c.style.color = mix(ghost, ghost, 0); c.style.filter = 'none'; }
+        else if (t < .35) { const k = t / .35; c.style.opacity = k.toFixed(3); c.style.color = mix(ghost, ghost, 0); c.style.filter = `blur(${(8 - 6.5 * k).toFixed(2)}px)`; }
+        else if (t < .7) { const k = (t - .35) / .35; c.style.opacity = '1'; c.style.color = mix(ghost, soft, k); c.style.filter = `blur(${(1.5 * (1 - k)).toFixed(2)}px)`; }
+        else { const k = (t - .7) / .3; c.style.opacity = '1'; c.style.color = mix(soft, ink, k); c.style.filter = 'none'; }
+      });
+    };
     const schedule = () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } };
     update(); addEventListener('scroll', schedule, { passive: true }); addEventListener('resize', schedule);
   }
