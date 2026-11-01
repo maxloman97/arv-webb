@@ -43,6 +43,16 @@ function arvinge_page($slug) {
     return esc_url(home_url('/' . trim($slug, '/') . '/'));
 }
 
+function arvinge_author_name($user_id) {
+    $first = trim((string) get_the_author_meta('first_name', $user_id));
+    $last = trim((string) get_the_author_meta('last_name', $user_id));
+    if ($first !== '' && $last !== '') return $first . ' ' . $last;
+    $email = strtolower((string) get_the_author_meta('user_email', $user_id));
+    $known = ['par@arvinge.se' => 'Pär Johansson', 'max@arvinge.se' => 'Max Loman'];
+    if (isset($known[$email])) return $known[$email];
+    return (string) get_the_author_meta('display_name', $user_id);
+}
+
 function arvinge_contact_submit() {
     if (!check_ajax_referer('arvinge_contact', 'nonce', false)) {
         wp_send_json_error(['message' => 'Sessionen har gått ut. Ladda om sidan och försök igen.'], 403);

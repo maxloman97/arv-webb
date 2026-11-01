@@ -12,7 +12,7 @@ get_header();
       </div>
       <h1><?php the_title(); ?></h1>
       <?php if (has_excerpt()) : ?><p class="article-intro"><?php echo esc_html(get_the_excerpt()); ?></p><?php endif; ?>
-      <div class="article-author"><?php echo get_avatar(get_the_author_meta('ID'), 44, '', '', ['class' => 'article-avatar']); ?><span><?php echo esc_html(get_the_author()); ?></span></div>
+      <div class="article-author"><?php echo get_avatar(get_the_author_meta('ID'), 44, '', '', ['class' => 'article-avatar']); ?><span><?php echo esc_html(arvinge_author_name(get_the_author_meta('ID'))); ?></span></div>
     </header>
     <?php if (has_post_thumbnail()) : ?><figure class="article-cover"><?php the_post_thumbnail('full', ['loading' => 'eager']); ?></figure><?php endif; ?>
     <div class="article-content"><?php the_content(); ?></div>
