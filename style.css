@@ -3,7 +3,7 @@ Theme Name: Arvinge
 Theme URI: https://arvinge.se/
 Author: Arvinge
 Description: Responsivt WordPress-tema för Arvinge.
-Version: 0.5.11
+Version: 0.5.12
 Requires PHP: 7.4
 Text Domain: arvinge
 */
@@ -115,6 +115,7 @@ button,input{font-family:inherit}
 .tmpic{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:4 / 5;margin-bottom:20px;border-radius:16px;overflow:hidden;background:radial-gradient(80% 60% at 50% 32%,rgba(175,178,206,.1),transparent 70%),#272735}
 .tmpic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}
 .tmn{margin:0;font-size:19px;font-weight:480;color:#F4F5F9}
+.person-name-image{display:inline-block;width:auto;height:.76em;vertical-align:-.03em}
 .tmr{margin:4px 0 0;font-size:15px;font-weight:360;line-height:1.45;color:#AFB2CE}
 .ph{color:#8f92ab}
 

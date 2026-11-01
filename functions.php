@@ -53,6 +53,13 @@ function arvinge_author_name($user_id) {
     return (string) get_the_author_meta('display_name', $user_id);
 }
 
+function arvinge_author_markup($name) {
+    if ($name === 'Max Loman') {
+        return '<img class="person-name-image" src="' . arvinge_asset('person-01.png') . '" alt="" width="387" height="56">';
+    }
+    return esc_html($name);
+}
+
 add_action('init', function () {
     register_post_type('arvinge_forfragan', [
         'labels' => [
