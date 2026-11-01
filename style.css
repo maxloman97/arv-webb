@@ -3,7 +3,7 @@ Theme Name: Arvinge
 Theme URI: https://arvinge.se/
 Author: Arvinge
 Description: Responsivt WordPress-tema för Arvinge.
-Version: 0.5.3
+Version: 0.5.4
 Requires PHP: 7.4
 Text Domain: arvinge
 */
@@ -483,6 +483,8 @@ main{overflow:hidden}
 .article-content .wp-block-button__link{display:inline-block;padding:13px 22px;border-radius:9px;background:#5266eb;color:#fff;text-decoration:none}
 .article-end{display:flex;justify-content:space-between;gap:24px;max-width:760px;margin:80px auto 0;padding-top:24px;border-top:1px solid #32323b}
 @media(max-width:820px){.arvinge-article{padding:112px 0 80px}.article-header{margin-bottom:40px}.article-meta{margin-top:36px}.article-header h1{font-size:clamp(36px,10vw,54px)}.article-cover{margin-bottom:40px}.article-content{font-size:17px}.article-end{margin-top:56px}}
+.rev-sec .revs{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:820px){.rev-sec .revs{grid-template-columns:none}}
 .analysis-form{display:flex;gap:10px;width:100%}.analysis-form .finput{flex:1;min-width:0;height:44px;border:1px solid #32323b;background:#161620;color:#f4f5f9;padding:0 14px;border-radius:4px;font-size:16px}.analysis-form .btn{height:44px;padding:0 18px}
 .goal-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;margin-top:32px}.goal-panel .goal-content{width:100%}
 .goal-panel .goal-content{display:flex;flex:1}.goal-panel .gp{flex:1}.goal-arrow{opacity:0}.goal.on .goal-arrow{opacity:1}

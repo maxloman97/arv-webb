@@ -53,6 +53,26 @@ function arvinge_author_name($user_id) {
     return (string) get_the_author_meta('display_name', $user_id);
 }
 
+add_action('template_redirect', function () {
+    if (is_preview()) return;
+    if (is_page(['event', 'delta-som-partner', 'motesplats', 'varfor-samlas-vi'])) {
+        wp_safe_redirect(arvinge_page('forum-event'), 302);
+        exit;
+    }
+    if (is_page('testa-hemsida')) {
+        wp_safe_redirect(arvinge_page('kontakt'), 302);
+        exit;
+    }
+    if (is_page('nyhetsbrev')) {
+        wp_safe_redirect(arvinge_page('blogg'), 302);
+        exit;
+    }
+    if (is_page('logga-in')) {
+        wp_safe_redirect(wp_login_url(), 302);
+        exit;
+    }
+});
+
 function arvinge_contact_submit() {
     if (!check_ajax_referer('arvinge_contact', 'nonce', false)) {
         wp_send_json_error(['message' => 'Sessionen har gått ut. Ladda om sidan och försök igen.'], 403);
