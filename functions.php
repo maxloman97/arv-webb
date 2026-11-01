@@ -53,6 +53,41 @@ function arvinge_author_name($user_id) {
     return (string) get_the_author_meta('display_name', $user_id);
 }
 
+add_action('init', function () {
+    register_post_type('arvinge_forfragan', [
+        'labels' => [
+            'name' => 'Förfrågningar',
+            'singular_name' => 'Förfrågan',
+            'menu_name' => 'Förfrågningar',
+        ],
+        'public' => false,
+        'show_ui' => true,
+        'show_in_rest' => false,
+        'menu_icon' => 'dashicons-email-alt',
+        'supports' => ['title', 'editor'],
+        'capabilities' => [
+            'edit_post' => 'manage_options',
+            'read_post' => 'manage_options',
+            'delete_post' => 'manage_options',
+            'edit_posts' => 'manage_options',
+            'edit_others_posts' => 'manage_options',
+            'publish_posts' => 'manage_options',
+            'read_private_posts' => 'manage_options',
+            'create_posts' => 'do_not_allow',
+        ],
+        'map_meta_cap' => false,
+    ]);
+});
+
+add_filter('manage_arvinge_forfragan_posts_columns', function ($columns) {
+    $columns['arvinge_mail_status'] = 'E-post';
+    return $columns;
+});
+add_action('manage_arvinge_forfragan_posts_custom_column', function ($column, $post_id) {
+    if ($column !== 'arvinge_mail_status') return;
+    echo get_post_meta($post_id, '_arvinge_mail_status', true) === 'sent' ? 'Skickad' : 'Misslyckades';
+}, 10, 2);
+
 add_action('template_redirect', function () {
     if (is_preview()) return;
     if (is_page(['event', 'delta-som-partner', 'motesplats', 'varfor-samlas-vi'])) {
@@ -103,9 +138,19 @@ function arvinge_contact_submit() {
         }
     }
     $lines[] = "\nMeddelande:\n" . $message;
+    $saved = wp_insert_post([
+        'post_type' => 'arvinge_forfragan',
+        'post_status' => 'private',
+        'post_title' => ucfirst($type) . ' – ' . $name,
+        'post_content' => implode("\n", $lines),
+    ], true);
+    if (is_wp_error($saved)) {
+        wp_send_json_error(['message' => 'Förfrågan kunde inte sparas just nu. Försök igen eller ring oss.'], 500);
+    }
     $recipients = $type === 'event' ? ['johan@arvinge.se'] : ($type === 'projekt' ? ['par@arvinge.se', 'max@arvinge.se'] : [get_option('admin_email')]);
     $subject = 'Ny förfrågan via arvinge.se: ' . ucfirst($type);
     $sent = wp_mail($recipients, $subject, implode("\n", $lines), ['Reply-To: ' . $name . ' <' . $email . '>']);
+    update_post_meta($saved, '_arvinge_mail_status', $sent ? 'sent' : 'failed');
     if (!$sent) {
         wp_send_json_error(['message' => 'Meddelandet kunde inte skickas just nu. Försök igen eller ring oss.'], 500);
     }

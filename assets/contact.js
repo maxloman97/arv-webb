@@ -94,7 +94,7 @@
   document.getElementById('contact-reset').addEventListener('click', () => {
     form.reset();
     form.querySelectorAll('[data-chip]').forEach(button => { button.classList.remove('on'); button.setAttribute('aria-pressed', 'false'); });
-    choose('projekt');
+    choose(new URLSearchParams(location.search).get('typ') === 'event' ? 'event' : 'projekt');
     thanks.hidden = true;
     form.hidden = false;
     form.scrollIntoView({ behavior: 'smooth', block: 'start' });

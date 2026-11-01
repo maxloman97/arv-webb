@@ -301,7 +301,7 @@ button{font-family:inherit}
 body:has(.forum-page){background:#171721;color:#F4F5F9;font-family:'Inter Tight',system-ui,sans-serif}
 .forum-page [hidden]{display:none!important}
 .page-forum-event .navlinks a[href$="/forum-event/"]{background:rgba(175,178,206,.16);color:#fff}
-.forum-page .forum-hero{display:block;position:relative;min-height:0;height:auto;overflow:hidden;background:#171721;padding:200px 0 128px;text-align:left}
+.forum-page .forum-hero{display:block;position:relative;min-height:0;height:auto;overflow:hidden;background:#171721;padding:200px 0 128px;text-align:left;pointer-events:auto}
 .forum-page .forum-hero .hbg{position:absolute;inset:0;z-index:0;pointer-events:none}
 .forum-page .forum-hero .hbg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;filter:brightness(.86)}
 .forum-page .forum-hero .hbg-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,20,.55) 0%,rgba(14,15,25,.62) 45%,#171721 100%)}
