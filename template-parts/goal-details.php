@@ -1,5 +1,5 @@
 <?php
-$capabilities = ['Strategi', 'Innehåll', 'Webb & digital struktur', 'SEO/GEO', 'Konceptutveckling', 'Annonsering', 'Projektledning', 'AI & automation', 'Forum & Event'];
+$capabilities = ['AI och automation', 'Annonsering', 'Forum och Event', 'Innehåll', 'Konceptutveckling', 'Konverteringsoptimering', 'Projektledning', 'Research', 'SEO/GEO', 'Säljstöd', 'Strategi', 'Webb och digital struktur'];
 $included = explode(' · ', $g[3]);
 ?>
 <div class="gp">
