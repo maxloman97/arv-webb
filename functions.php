@@ -83,8 +83,8 @@ function arvinge_author_role($user_id) {
     $roles = [
         'Pär Johansson' => 'Grundare · Budskap, koncept och positionering',
         'Max Loman' => 'Teknik, webbutveckling och digitalisering',
-        'Alice Holmgren' => 'Analys, AI och automation',
-        'Johan Zetterstedt' => 'Mötesplatser och event',
+        'Alice Holmgren' => 'Research, analys och projektledning',
+        'Johan Zetterstedt' => 'Mötesplatser, strategi och affärsutveckling',
     ];
     return isset($roles[$name]) ? $roles[$name] : '';
 }
