@@ -30,6 +30,10 @@ add_action('wp_enqueue_scripts', function () {
     if (is_page('blogg') || (is_home() && !is_front_page())) {
         wp_enqueue_style('arvinge-blog', get_template_directory_uri() . '/assets/blog.css', ['arvinge-style'], wp_get_theme()->get('Version'));
     }
+    if (is_singular('post')) {
+        wp_enqueue_style('arvinge-single', get_template_directory_uri() . '/assets/single.css', ['arvinge-style'], wp_get_theme()->get('Version'));
+        wp_enqueue_script('arvinge-single', get_template_directory_uri() . '/assets/single.js', [], wp_get_theme()->get('Version'), true);
+    }
     if (is_page('press')) {
         wp_enqueue_style('arvinge-press', get_template_directory_uri() . '/assets/press.css', ['arvinge-style'], wp_get_theme()->get('Version'));
     }
@@ -58,6 +62,46 @@ function arvinge_author_markup($name) {
         return '<img class="person-name-image" src="' . arvinge_asset('person-02.png') . '" alt="" width="387" height="56">';
     }
     return esc_html($name);
+}
+
+function arvinge_author_image($user_id) {
+    $name = arvinge_author_name($user_id);
+    $images = [
+        'Pär' => '28f67e62618ed96125d8841d7bf9f4ca.jpg',
+        'Max' => '91d83c7dc86c14f3908c77a7f7848894.jpg',
+        'Alice' => 'd0401589e9a1a2d56f7ca73f923f7f43.jpg',
+        'Johan' => '2397ebc4ed3eba0fe699a31ffa439be3.jpg',
+    ];
+    foreach ($images as $person => $file) {
+        if (strpos($name, $person) !== false) return arvinge_asset($file);
+    }
+    return esc_url(get_avatar_url($user_id, ['size' => 128]));
+}
+
+function arvinge_author_role($user_id) {
+    $name = arvinge_author_name($user_id);
+    $roles = [
+        'Pär Johansson' => 'Grundare · Budskap, koncept och positionering',
+        'Max Loman' => 'Teknik, webbutveckling och digitalisering',
+        'Alice Holmgren' => 'Analys, AI och automation',
+        'Johan Zetterstedt' => 'Mötesplatser och event',
+    ];
+    return isset($roles[$name]) ? $roles[$name] : '';
+}
+
+function arvinge_author_bio($user_id) {
+    $bio = trim((string) get_the_author_meta('description', $user_id));
+    if ($bio !== '') {
+        return arvinge_author_name($user_id) === 'Max Loman' ? str_replace('Max Loman', 'Max', $bio) : $bio;
+    }
+    $bios = [
+        'Pär Johansson' => 'Efter mer än tjugo år som copywriter och kommunikationsrådgivare hjälper Pär företag att hitta berättelser som stärker affären.',
+        'Max Loman' => 'Max arbetar med design, webb och teknik och hjälper Arvinges kunder att föra idéer hela vägen ut på marknaden.',
+        'Alice Holmgren' => 'Alice arbetar med research och affärsanalys för att ge idéer en stabilare grund.',
+        'Johan Zetterstedt' => 'Johan utvecklar mötesplatser som bygger relationer och öppnar för nya affärer.',
+    ];
+    $name = arvinge_author_name($user_id);
+    return isset($bios[$name]) ? $bios[$name] : '';
 }
 
 add_action('init', function () {
