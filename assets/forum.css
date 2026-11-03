@@ -117,11 +117,12 @@ button{font-family:inherit}
 .tl-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px max(var(--gut),calc((100% - var(--max)) / 2)) 8px;scroll-padding-left:max(var(--gut),calc((100% - var(--max)) / 2));outline:none}
 .tl-track::-webkit-scrollbar{display:none}
 .tl-track:focus-visible{box-shadow:inset 0 0 0 2px var(--primary)}
-.tl-card{flex:none;width:clamp(260px,24vw,330px);min-height:236px;scroll-snap-align:start;border-radius:16px;padding:28px 30px;display:flex;flex-direction:column;justify-content:space-between;gap:32px;background:rgba(39,39,53,.42);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 1px 0 rgba(255,255,255,.06);transition:background .3s,box-shadow .3s}
+.tl-card{flex:none;width:clamp(260px,24vw,330px);min-height:236px;scroll-snap-align:start;border-radius:16px;padding:28px 30px;display:grid;grid-template-rows:80px 70px minmax(0,1fr) auto;gap:20px;background:rgba(39,39,53,.42);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),inset 0 1px 0 rgba(255,255,255,.06);transition:background .3s,box-shadow .3s}
 .tl-card.on{box-shadow:inset 0 0 0 1px rgba(244,245,249,.4)}
 .tl-card .y{font-size:clamp(30px,2.6vw,40px);font-weight:480;line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums;color:#F4F5F9}
-.tl-card p{margin:0;font-size:17px;font-weight:360;line-height:1.5;color:#C3C3CC}
+.tl-card p{margin:0;font-size:16px;font-weight:360;line-height:1.5;color:#C3C3CC}
 .tl-card h3{margin:0;font-size:20px;font-weight:480;line-height:1.25;letter-spacing:-.01em;color:#F4F5F9}
+.tl-card .tlink{justify-self:start;align-self:end}
 .tl-card.now{background:rgba(58,58,72,.6)}
 .tl-card.now p{color:#F4F5F9;font-weight:420}
 .tl-ctrl{display:flex;align-items:center;gap:20px;margin-top:32px}
@@ -241,7 +242,7 @@ button{font-family:inherit}
   .lsec .sec + .sec{padding-top:104px}
   .sec{padding-top:112px}
   .logorow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 16px;justify-items:center;font-size:13px;padding:36px 0}
-  .tl-card{width:76vw;min-height:210px;padding:24px}
+  .tl-card{width:76vw;min-height:210px;padding:24px;grid-template-rows:70px 76px minmax(0,1fr) auto;gap:18px}
   footer{padding-top:64px !important}
 }
 @media (max-width: 560px){
