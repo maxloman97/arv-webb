@@ -74,4 +74,32 @@
       document.getElementById(button.getAttribute('aria-controls')).hidden = false;
     }
   }));
+
+  const dialog = root.querySelector('#story-dialog');
+  const stories = [...dialog.querySelectorAll('.story-dialog-article')];
+  const closeStory = dialog.querySelector('.story-dialog-close');
+  const previousStory = dialog.querySelector('.story-dialog-prev');
+  const nextStory = dialog.querySelector('.story-dialog-next');
+  let storyIndex = 0;
+  let storyTrigger = null;
+  function showStory(nextIndex) {
+    storyIndex = Math.max(0, Math.min(stories.length - 1, nextIndex));
+    stories.forEach((story, i) => { story.hidden = i !== storyIndex; });
+    previousStory.disabled = storyIndex === 0;
+    nextStory.disabled = storyIndex === stories.length - 1;
+    dialog.scrollTop = 0;
+  }
+  root.querySelectorAll('.story-trigger').forEach(trigger => trigger.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    storyTrigger = trigger;
+    showStory(Number(trigger.dataset.storyIndex));
+    dialog.showModal();
+    closeStory.focus();
+  }));
+  closeStory.addEventListener('click', () => dialog.close());
+  previousStory.addEventListener('click', () => showStory(storyIndex - 1));
+  nextStory.addEventListener('click', () => showStory(storyIndex + 1));
+  dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', () => { if (storyTrigger) storyTrigger.focus(); });
 })();
