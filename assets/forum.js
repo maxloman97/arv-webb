@@ -50,7 +50,6 @@
   }, { passive: true });
 
   const process = [...root.querySelectorAll('.pstep')];
-  const headings = [...root.querySelectorAll('.proc-h span')];
   function updateProcess() {
     let active = 0;
     const line = innerHeight * .55;
@@ -59,7 +58,6 @@
       item.classList.toggle('on', i === active);
       item.classList.toggle('past', i < active);
     });
-    headings.forEach((item, i) => item.classList.toggle('lit', i === active || active === 3));
   }
   updateProcess();
   addEventListener('scroll', updateProcess, { passive: true });

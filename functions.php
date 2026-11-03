@@ -23,6 +23,9 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_style('arvinge-forum', get_template_directory_uri() . '/assets/forum.css', ['arvinge-style'], wp_get_theme()->get('Version'));
         wp_enqueue_script('arvinge-forum', get_template_directory_uri() . '/assets/forum.js', [], wp_get_theme()->get('Version'), true);
     }
+    if (is_page(['motesplats', 'varfor-samlas-vi'])) {
+        wp_enqueue_style('arvinge-forum-detail', get_template_directory_uri() . '/assets/forum-detail.css', ['arvinge-style'], wp_get_theme()->get('Version'));
+    }
     if (is_page('om-oss')) {
         wp_enqueue_style('arvinge-about', get_template_directory_uri() . '/assets/about.css', ['arvinge-style'], wp_get_theme()->get('Version'));
         wp_enqueue_script('arvinge-about', get_template_directory_uri() . '/assets/about.js', [], wp_get_theme()->get('Version'), true);
@@ -141,7 +144,7 @@ add_action('manage_arvinge_forfragan_posts_custom_column', function ($column, $p
 
 add_action('template_redirect', function () {
     if (is_preview()) return;
-    if (is_page(['event', 'delta-som-partner', 'motesplats', 'varfor-samlas-vi'])) {
+    if (is_page(['event', 'delta-som-partner'])) {
         wp_safe_redirect(arvinge_page('forum-event'), 302);
         exit;
     }

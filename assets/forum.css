@@ -81,6 +81,7 @@ button{font-family:inherit}
 .fmt-l .lead{margin-top:20px}
 .fformats{display:flex;flex-direction:column;border-top:1px solid #32323B}
 .fformats > div{display:grid;grid-template-columns:48px minmax(0,1fr);gap:24px;align-items:start;padding:36px 0;border-bottom:1px solid #32323B}
+.fformats > div[id]{scroll-margin-top:110px}
 .fformats h3{margin:6px 0 10px;font-weight:480;font-size:clamp(21px,1.7vw,24px);line-height:1.2;letter-spacing:-.01em;color:#F4F5F9}
 .fformats p{margin:0 0 18px;max-width:34em;font-size:17px;font-weight:360;line-height:1.55;color:#C3C3CC}
 .fformats .tlink{font-size:15px}
@@ -105,6 +106,7 @@ button{font-family:inherit}
 .pno{display:block;font-size:15px;font-weight:480;letter-spacing:.08em;line-height:23px;color:#F4F5F9;font-variant-numeric:tabular-nums}
 .pstep h3{margin:20px 0 16px;font-weight:480;font-size:clamp(28px,2.6vw,38px);line-height:1.06;letter-spacing:-.02em;color:#F4F5F9}
 .pstep p{margin:0;font-size:18px;font-weight:360;line-height:1.6;color:#EDEDF3;max-width:32em}
+.pstep p+p{margin-top:16px}
 
 /* Tidslinje som slider */
 .tl-rail{position:relative;display:flex;justify-content:space-between;gap:8px;margin:0 0 36px;padding:0;list-style:none}
@@ -119,6 +121,7 @@ button{font-family:inherit}
 .tl-card.on{box-shadow:inset 0 0 0 1px rgba(244,245,249,.4)}
 .tl-card .y{font-size:clamp(30px,2.6vw,40px);font-weight:480;line-height:1;letter-spacing:-.025em;font-variant-numeric:tabular-nums;color:#F4F5F9}
 .tl-card p{margin:0;font-size:17px;font-weight:360;line-height:1.5;color:#C3C3CC}
+.tl-card h3{margin:0;font-size:20px;font-weight:480;line-height:1.25;letter-spacing:-.01em;color:#F4F5F9}
 .tl-card.now{background:rgba(58,58,72,.6)}
 .tl-card.now p{color:#F4F5F9;font-weight:420}
 .tl-ctrl{display:flex;align-items:center;gap:20px;margin-top:32px}
@@ -326,6 +329,12 @@ body:has(.forum-page){background:#171721;color:#F4F5F9;font-family:'Inter Tight'
 .forum-page .tl-count{font-size:15px;font-weight:420;color:#AFB2CE;font-variant-numeric:tabular-nums;min-width:64px}
 .forum-page .tl-buttons{display:flex;gap:10px}
 .forum-page .faq-answer{margin:0;padding:0 32px 24px 0;font-size:17px;font-weight:360;line-height:1.55;color:#C3C3CC}
+.forum-page .faq-answer p{margin:0 0 12px}
+.forum-page .faq-answer p:last-child{margin-bottom:0}
+.forum-page .clients-head .lead p{margin:0 0 16px}
+.forum-page .clients-head .lead p:last-child{margin-bottom:0}
+.forum-page .pcbody p:not(.pcr){margin:20px 0 0;font-size:16px;line-height:1.55;color:#C3C3CC}
+.forum-page .forum-team-section .team+p{margin:28px 0 0;font-size:17px;line-height:1.5;color:#C3C3CC}
 .forum-page .faq-q[aria-expanded="true"] svg{transform:rotate(180deg)}
 .forum-page .forum-team-section{padding-bottom:150px}
 .forum-page .pcard{border-radius:16px}

@@ -1,0 +1,23 @@
+.forum-detail{color:#f4f5f9;background:#171721}
+.forum-detail .detail-hero{padding:clamp(140px,16vw,230px) 0 96px;background:radial-gradient(ellipse at 72% 15%,rgba(82,102,235,.19),transparent 54%)}
+.forum-detail .detail-back{display:inline-flex;margin-bottom:42px;color:#afb2ce;font-size:15px}
+.forum-detail .detail-back:hover{color:#fff}
+.forum-detail h1{max-width:1000px;margin:0 0 34px;font-size:clamp(48px,7vw,100px);font-weight:480;line-height:1.02;letter-spacing:-.045em}
+.forum-detail .detail-lead{max-width:780px;font-size:clamp(20px,2vw,25px);line-height:1.46;color:#dedfe8}
+.forum-detail .detail-lead p{margin:0 0 22px}
+.forum-detail .detail-index{display:flex;flex-wrap:wrap;gap:9px;padding-top:22px;padding-bottom:22px;border-top:1px solid #32323b;border-bottom:1px solid #32323b}
+.forum-detail .detail-index a{padding:10px 16px;border-radius:999px;background:#272735;color:#f4f5f9;font-size:15px;transition:background .2s}
+.forum-detail .detail-index a:hover{background:#3c3c53}
+.forum-detail .detail-stories{padding-top:52px;padding-bottom:110px}
+.forum-detail .detail-story{display:grid;grid-template-columns:minmax(0,.6fr) minmax(0,1fr);column-gap:72px;padding:72px 0;border-bottom:1px solid #32323b;scroll-margin-top:90px}
+.forum-detail .detail-story h2{grid-column:1;grid-row:1 / span 10;align-self:start;position:sticky;top:110px;margin:0;font-size:clamp(28px,3vw,42px);font-weight:480;line-height:1.14;letter-spacing:-.025em}
+.forum-detail .detail-story p{grid-column:2;margin:0 0 22px;font-size:18px;line-height:1.6;color:#c3c3cc}
+.forum-detail .detail-story .detail-source{margin-top:8px;margin-bottom:0;font-size:14px;color:#afb2ce}
+.forum-detail .detail-end{padding:84px 0 120px;background:#20202c;scroll-margin-top:72px}
+.forum-detail .detail-end p,.forum-detail .detail-end h2{max-width:780px;margin:0 0 30px;font-size:clamp(26px,3vw,42px);font-weight:480;line-height:1.18;letter-spacing:-.02em}
+.forum-detail .detail-actions{display:flex;align-items:center;flex-wrap:wrap;gap:20px 30px}
+.forum-detail .meeting-intro{padding:0 0 100px}
+.forum-detail .meeting-box{max-width:860px;padding:clamp(28px,4vw,58px);border:1px solid #44445b;border-radius:18px;background:#272735}
+.forum-detail .meeting-box p{margin:0;font-size:clamp(20px,2vw,26px);line-height:1.5}
+.forum-detail.meeting-page .detail-hero .btn{margin-top:22px}
+@media(max-width:760px){.forum-detail .detail-hero{padding:125px 0 70px}.forum-detail .detail-story{display:block;padding:56px 0}.forum-detail .detail-story h2{position:static;margin:0 0 28px}.forum-detail .detail-story p{font-size:16px}.forum-detail .detail-stories{padding-bottom:70px}.forum-detail .detail-end{padding:68px 0 90px}}

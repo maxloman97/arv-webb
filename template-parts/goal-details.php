@@ -6,7 +6,7 @@ $included = explode(' · ', $g[3]);
   <h3><?php echo esc_html($g[1]); ?></h3>
   <p class="txt"><?php echo esc_html($g[2]); ?></p>
   <div class="goal-bottom">
-    <p class="label">Det här ingår</p>
+    <p class="label">Kompetenser vi kan kombinera</p>
     <ul class="caps">
       <?php foreach ($capabilities as $cap) : $active = in_array($cap, $included, true); ?>
       <li class="cap<?php echo $active ? ' on' : ''; ?>"><span class="ck" aria-hidden="true"><?php echo $active ? '✓' : ''; ?></span><?php echo esc_html($cap); ?><span class="sr"><?php echo $active ? ' – ingår' : ' – ingår inte'; ?></span></li>
