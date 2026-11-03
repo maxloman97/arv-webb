@@ -144,7 +144,7 @@ button,input{font-family:inherit}
 /* Avslut */
 .glowcard{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;padding:88px 40px;border-radius:16px;background:#181a2b;box-shadow:inset 0 0 0 1px rgba(175,178,206,.14)}
 .glowcard::before{content:"";position:absolute;inset:-25%;z-index:-1;background:radial-gradient(36% 44% at 24% 30%,rgba(82,102,235,.6),transparent 70%),radial-gradient(34% 42% at 78% 70%,rgba(69,85,191,.5),transparent 70%),radial-gradient(30% 38% at 55% 45%,rgba(20,20,30,.9),transparent 70%),linear-gradient(135deg,#202446 0%,#191a2c 55%,#1c2140 100%);filter:blur(56px)}
-.glowcard p{margin:16px 0 32px;font-size:18px;color:#E2E3EA}
+.glowcard p{margin:16px 0 32px;font-size:18px;line-height:1.55;color:#E2E3EA}
 /* Teamets ansikten ovanför rubriken – som i avslutet på startsidan */
 .astack{display:flex;justify-content:center;margin-bottom:28px}
 .astack span{width:44px;height:44px;margin-left:-10px;border-radius:999px;overflow:hidden;background:#32323B;box-shadow:0 0 0 2px #1d1f35}

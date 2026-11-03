@@ -3,7 +3,7 @@ Theme Name: Arvinge
 Theme URI: https://arvinge.se/
 Author: Arvinge
 Description: Responsivt WordPress-tema för Arvinge.
-Version: 0.5.28
+Version: 0.5.29
 Requires PHP: 7.4
 Text Domain: arvinge
 */
@@ -451,7 +451,7 @@ main{overflow:visible}
 .rev::before{content:'“';display:block;height:22px;color:#afb2ce;font-family:Georgia,serif;font-size:62px;line-height:.72;font-weight:700}
 .ctacard{border-radius:16px;padding:80px 40px;min-height:500px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;box-shadow:inset 0 0 0 1px rgba(175,178,206,.14)}
 .ctacard .h2{text-wrap:balance}
-.ctacard>p{font-size:18px;color:#e2e3ea}.contact-sec{padding:170px 0 140px}
+.ctacard>p{font-size:18px;line-height:1.55;color:#e2e3ea}.contact-sec{padding:170px 0 140px}
 .faq h3{font-size:24px;font-weight:480;margin:0 0 20px}.faq-q{list-style:none}.faq-q::-webkit-details-marker{display:none}.faq-item>p{margin:0;padding:0 32px 22px 0;color:#c3c3cc;line-height:1.55}.faq-item[open] .faq-q span{transform:rotate(180deg)}
 .site-footer{background:#171721;border-top:1px solid #32323b;padding:80px 0 20px}.site-footer .fgrid>div{display:flex;flex-direction:column;align-items:flex-start;gap:12px}.site-footer h3{font-size:15px;margin:0 0 8px}.site-footer p{font-size:15px;line-height:1.5;color:#afb2ce;margin:0;max-width:250px}.site-footer a:not(.btn){font-size:15px;color:#afb2ce}.site-footer a:hover{color:#fff}.site-footer .fbottom{border-top:1px solid #32323b;margin-top:70px;padding:25px 0 10px;display:flex;justify-content:space-between;gap:20px;font-size:14px;color:#afb2ce}.basic-page{padding-top:150px;padding-bottom:100px;min-height:70vh}
 
