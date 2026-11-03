@@ -257,6 +257,6 @@ body:has(.about-page){background:#171721;color:#F4F5F9;font-family:'Inter Tight'
 .about-page .story-h{grid-column:1/-1;grid-row:1}
 .about-page .story-prog{grid-area:3/2}
 .about-page .about-end{padding-bottom:0}
-.about-page .glowcard .h2{max-width:14em}
+.about-page .glowcard .h2{max-width:14em;text-wrap:balance}
 .page-om-oss .site-footer{margin-top:150px}
 @media(max-width:820px){.about-page .about-hero{min-height:0!important;height:auto;padding:120px 0 72px!important}.about-page .about-hero .hero-h{font-size:clamp(27px,8.6vw,40px)}.about-page .about-hero .hero-row{margin-top:24px}.about-page .sec{padding-top:112px}.page-om-oss .navr>.navlogin{display:none}.about-page .story-h{margin-bottom:36px}.page-om-oss .site-footer{margin-top:112px}}
