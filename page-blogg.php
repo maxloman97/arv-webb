@@ -8,7 +8,7 @@ $featured = $posts ? array_shift($posts) : null;
 $arrow = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 $author_image = function ($post) {
     $name = arvinge_author_name($post->post_author);
-    foreach (['Pär' => '28f67e62618ed96125d8841d7bf9f4ca.jpg', 'Max' => '91d83c7dc86c14f3908c77a7f7848894.jpg', 'Alice' => 'd0401589e9a1a2d56f7ca73f923f7f43.jpg', 'Johan' => '2397ebc4ed3eba0fe699a31ffa439be3.jpg'] as $person => $file) {
+    foreach (['Pär' => 'par-johansson-2026.png', 'Max' => '91d83c7dc86c14f3908c77a7f7848894.jpg', 'Alice' => 'd0401589e9a1a2d56f7ca73f923f7f43.jpg', 'Johan' => '2397ebc4ed3eba0fe699a31ffa439be3.jpg'] as $person => $file) {
         if (strpos($name, $person) !== false) return arvinge_asset($file);
     }
     return esc_url(get_avatar_url($post->post_author, ['size' => 64]));

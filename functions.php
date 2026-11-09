@@ -70,7 +70,7 @@ function arvinge_author_markup($name) {
 function arvinge_author_image($user_id) {
     $name = arvinge_author_name($user_id);
     $images = [
-        'Pär' => '28f67e62618ed96125d8841d7bf9f4ca.jpg',
+        'Pär' => 'par-johansson-2026.png',
         'Max' => '91d83c7dc86c14f3908c77a7f7848894.jpg',
         'Alice' => 'd0401589e9a1a2d56f7ca73f923f7f43.jpg',
         'Johan' => '2397ebc4ed3eba0fe699a31ffa439be3.jpg',
